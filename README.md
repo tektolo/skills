@@ -2,7 +2,7 @@
 
 [![smithery badge](https://smithery.ai/badge/tektolo/rental-property)](https://smithery.ai/servers/tektolo/rental-property)
 
-Agent skills, a Claude Code plugin and the public API contract for **[Tektolo](https://tektolo.com)**. Tektolo runs deterministic, source-cited tools for real-world operations work: you send structured inputs, versioned rules are applied, and you get a checked answer with its sources. Every tool can be used three ways: on the web, from an AI assistant over MCP, or over REST.
+Agent skills, a Claude Code plugin and the public API contract for **[Tektolo](https://tektolo.com)**. Tektolo runs rules-based, source-cited tools for real-world operations work: you send structured inputs, versioned rules are applied, and you get a checked answer with its sources. The same findings always get the same answer. Where a tool reads your notes or a document, an AI model turns them into findings and never sets a number; the answer lists every finding it read so you can check them. Every tool can be used three ways: on the web, from an AI assistant over MCP, or over REST.
 
 This repository holds only instructions and public metadata. The engines and rule tables run on tektolo.com. Every file here is synced from the live site daily by [`scripts/sync.py`](scripts/sync.py).
 
