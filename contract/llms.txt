@@ -33,7 +33,7 @@ Reference pages, not tools: pages to read and cite, computed by the same engines
 
 Datasets under CC BY 4.0 (credit Tektolo, tektolo.com, with the version), built from the same rulesets as the tools. Index: https://tektolo.com/data/
 
-- [Security deposit rules by US state and city](https://tektolo.com/data/deposit-rules/): version sd-2027.1.3, 60 jurisdictions; [CSV](https://tektolo.com/data/deposit-rules/latest/deposit-rules.csv), [JSON](https://tektolo.com/data/deposit-rules/latest/deposit-rules.json), [datapackage.json](https://tektolo.com/data/deposit-rules/latest/datapackage.json)
+- [Security deposit rules by US state and city](https://tektolo.com/data/deposit-rules/): version sd-2027.1.17, 60 jurisdictions; [CSV](https://tektolo.com/data/deposit-rules/latest/deposit-rules.csv), [JSON](https://tektolo.com/data/deposit-rules/latest/deposit-rules.json), [datapackage.json](https://tektolo.com/data/deposit-rules/latest/datapackage.json)
 
 ## Pages
 

@@ -45,6 +45,19 @@ findings the AI read before you quote a number.
   Downloads: `POST .../scope/render/xlsx` (workbook), `.../render/html` (owner estimate),
   `.../render/csv` (work orders), `.../render/vendor_csv` (zip of per-trade scopes),
   `.../render/bids_html` (work lists for bids: one section per trade, no prices).
+- **A report file (REST only)**: when the user has the inspection report as a file (PDF, Word,
+  Excel, PowerPoint, CSV, or up to 5 photos of paper pages; 5 pages at most), go in three steps:
+  1. **Read**: `POST https://tektolo.com/v1/property-turnover/read_document` with a connector key
+     (`Authorization: Bearer <key>`, free from `POST /v1/keys`) and the file as
+     `multipart/form-data` field `files`, or JSON
+     `{"files": [{"name": "report.pdf", "content_base64": "..."}]}`. It returns a `reading`,
+     never an estimate. One document is one call of the key's daily free allowance.
+  2. **Check**: show the user each finding with its page and quote, and the rows named in
+     `reading.notes`; fix what they correct.
+  3. **Scope**: send `reading.findings` to `/v1/property-turnover/scope`, with `confirmed: true`
+     on each finding the user checked.
+  A 429 (`cap_address`, `free_tier_exhausted`, `cap_global`) means no more documents today:
+  say so and offer to code the report's findings yourself instead.
 - Catalog and schemas: `https://tektolo.com/catalog.json`, `https://tektolo.com/capabilities/property-turnover`.
 - **Web**: the free tool is `https://tektolo.com/tools/rental-property/property-turnover`; typical
   costs by area are at `https://tektolo.com/turnover-costs/`.

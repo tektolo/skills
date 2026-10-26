@@ -99,7 +99,7 @@
           "deposit-settlement"
         ],
         "summary": "Settle a security deposit after move-out",
-        "description": "Security deposit settlement for a US rental under the state's statute (and a covered city's ordinance): the date to return the deposit and itemized statement, each intended deduction assessed (allowed or not, prorated by useful life, documentation needed), interest owed, refund due, penalty exposure, a draft itemized statement and a citation for every rule. Covers all 50 states and DC, with city overlays for Chicago, San Francisco, Berkeley, Los Angeles, Seattle, Portland, Minneapolis and Saint Paul.\nWhen to use: A landlord or property manager is closing a move-out and asks when the deposit must be returned, what they may deduct (carpet, paint, cleaning, unpaid rent), how much interest is owed, what to put in the itemized statement, or what happens if they are late.\nNot for: Not legal advice and not a tenant demand letter. It does not price repairs (use property_turnover_quick_estimate for that), hold or account for deposits, or cover pet deposits, last-month's rent handling or non-US rentals. Where the statute sets no deadline (Kentucky, Tennessee) it says so; never present a guessed date as the rule.\nTip: Send as_of (today's date) for a repeatable answer; it defaults to today in UTC.\nTip: Give item_installed_on or item_age_years for carpet, paint, blinds and appliances; without them the tenancy length is assumed.\nTip: Mark normal wear with caused_by_tenant false; it is never deductible.\nTip: Relay deadline.return_by and its status, totals.refund_due_usd, penalty_exposure and the citations with their links (citations[].url); relay the result's disclaimer word for word.\nTip: Offer statement.text as the draft itemized statement (no names or addresses); in the copy for the tenant keep only the statement.notes whose audience is tenant.\nTip: For a printable statement to sign and send (HTML or PDF) or the deductions ledger (CSV), POST the same arguments as JSON to links.downloads; do not build the file yourself.\nTip: For a tenant (arguments with returned), links.downloads tenant_pdf or tenant_html is a neutral summary of the facts and the rule to send to the landlord; give the user that, not the landlord's statement.\nTip: Relay warnings, assumptions and unknowns (for example the Texas forwarding address).\nTip: Send the start-event dates a state needs when known (forwarding_address_received_on, demand_received_on, new_tenant_moved_in_on, claim_notice_sent_on in Florida); without them the clock is not_started.\nTip: Send the state-only facts the unknowns name (owner_is_natural_person in Georgia, county and deposit_in_separate_account in Tennessee, renter_notice_served_on in Utah, landlord_filed_action_on in Michigan).\nTip: deadline.status none_in_statute means no statutory deadline; deadline.extended_to is the statute's weekend roll-forward, but advise acting by return_by.\nDeterministic: the same input returns the same result_hash. Capability deposit-settlement v0.1.0 (experimental).",
+        "description": "Security deposit settlement for a US rental under the state's statute (and a covered city's ordinance): the date to return the deposit and itemized statement, each intended deduction assessed (allowed or not, prorated by useful life, documentation needed), interest owed, refund due, penalty exposure, a draft itemized statement and a citation for every rule. Covers all 50 states and DC, with city overlays for Chicago, San Francisco, Berkeley, Los Angeles, Seattle, Portland, Minneapolis and Saint Paul.\nWhen to use: A landlord or property manager is closing a move-out and asks when the deposit must be returned, what they may deduct (carpet, paint, cleaning, unpaid rent), how much interest is owed, what to put in the itemized statement, or what happens if they are late.\nNot for: Not legal advice and not a tenant demand letter. It does not price repairs (use property_turnover_quick_estimate for that), hold or account for deposits, or cover pet deposits, last-month's rent handling or non-US rentals. Where the statute sets no deadline (Kentucky, Tennessee) it says so; never present a guessed date as the rule.\nTip: Send as_of (today's date) for a repeatable answer; it defaults to today in UTC.\nTip: Give item_installed_on or item_age_years for carpet, paint, blinds and appliances; without them the tenancy length is assumed.\nTip: Mark normal wear with caused_by_tenant false; it is never deductible.\nTip: Relay deadline.return_by and its status, totals.refund_due_usd, penalty_exposure and the citations with their links (citations[].url); relay the result's disclaimer word for word.\nTip: Offer statement.text as the draft itemized statement (no names or addresses); in the copy for the tenant keep only the statement.notes whose audience is tenant.\nTip: For a printable statement to sign and send (HTML or PDF) or the deductions ledger (CSV), POST the same arguments as JSON to links.downloads; do not build the file yourself.\nTip: For a tenant, links.downloads tenant_pdf or tenant_html is a neutral summary of the facts and the rule to send to the landlord; give the user that, not the landlord's statement. Send returned in its arguments (what came back and when, or nothing yet); without it the summary's \"Returned so far\" line says \"Not stated\".\nTip: Relay warnings, assumptions and unknowns (for example the Texas forwarding address).\nTip: Send the start-event dates a state needs when known (forwarding_address_received_on, demand_received_on, new_tenant_moved_in_on, claim_notice_sent_on in Florida); without them the clock is not_started.\nTip: Send the state-only facts the unknowns name (owner_is_natural_person in Georgia, county and deposit_in_separate_account in Tennessee, renter_notice_served_on in Utah, landlord_filed_action_on in Michigan).\nTip: deadline.status none_in_statute means no statutory deadline; deadline.extended_to is the statute's weekend roll-forward, but advise acting by return_by.\nDeterministic: the same input returns the same result_hash. Capability deposit-settlement v0.1.0 (experimental).",
         "operationId": "deposit_settlement_settle",
         "parameters": [
           {
@@ -2134,7 +2134,7 @@
           "feedback"
         ],
         "summary": "Send feedback about the site, a tool, or an idea for a new tool",
-        "description": "Free text plus a scope. For humans (the web forms use it); there is no MCP tool for this on purpose. Messages are capped at 2000 characters, links are replaced with [link] and at most 3 are accepted. Provide an email only if you want a reply. Rate limited to 5 per minute. Leave `website` empty.",
+        "description": "Free text plus a scope, from people or agents. Agents may POST directly; there is no MCP tool for this on purpose. Messages are capped at 2000 characters, links are replaced with [link] and at most 3 are accepted. Provide an email only if you want a reply. Rate limited to 5 per minute. Leave `website` empty.",
         "operationId": "post_feedback_v1_feedback_post",
         "requestBody": {
           "content": {
@@ -2689,6 +2689,18 @@
               }
             ],
             "title": "Notice Within Days"
+          },
+          "demand_within_days": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "exclusiveMinimum": 0.0
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Demand Within Days"
           },
           "pending": {
             "type": "string",
@@ -3698,7 +3710,7 @@
               "other"
             ],
             "title": "Category",
-            "description": "One of: unpaid_rent, unpaid_utilities, cleaning, carpet, flooring, paint, blinds_window_coverings, appliance, fixture_or_hardware, wall_or_door_repair, key_or_lock, late_fees, lease_break_fee, moving_and_storage, reletting_costs (advertising or a broker to re-rent after an early move-out), trash_and_abandoned_items (removing trash or belongings left behind), other_damage, other. Carpet cleaning is cleaning (with cleaning_kind), not carpet."
+            "description": "Charge category; carpet cleaning uses cleaning with cleaning_kind, not carpet."
           },
           "description": {
             "anyOf": [
@@ -4313,6 +4325,18 @@
       },
       "DepositCap": {
         "properties": {
+          "post_closing_occupancy_from": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Post Closing Occupancy From"
+          },
           "excess_remedy": {
             "anyOf": [
               {
@@ -4374,7 +4398,8 @@
             "type": "string",
             "enum": [
               "collected",
-              "lease_signed"
+              "lease_signed",
+              "required"
             ],
             "title": "Effective By",
             "default": "collected"
@@ -4454,6 +4479,18 @@
             ],
             "title": "Max Term Months"
           },
+          "periodic_after_months": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "exclusiveMinimum": 0.0
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Periodic After Months"
+          },
           "later_months_rent": {
             "anyOf": [
               {
@@ -4520,6 +4557,18 @@
             "type": "boolean",
             "title": "Excludes Pet Deposit",
             "default": false
+          },
+          "pet_cap_months": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Pet Cap Months"
           },
           "counts_prepaid_rent": {
             "type": "boolean",
@@ -4634,7 +4683,7 @@
           "source"
         ],
         "title": "DepositCap",
-        "description": "The statutory deposit limit, computed (round 2 class 9).\n\n``effective_on`` / ``effective_by``: the cap applies to deposits collected (``collected``,\nCalifornia AB 12, Colorado) or leases entered into or renewed (``lease_signed``, Georgia,\nMaryland) on or after the date; earlier ones keep ``before_months_rent`` (None: no cap) and\n``before_furnished_months``. ``furnished_months``: the cap for a furnished unit (Kansas);\n``furnished_exempt``: none for one (Delaware). ``max_rent_usd``: no cap above this rent\n(Alaska $2,000). ``min_term_months``: only for leases of at least this term (Delaware: one\nyear); ``max_term_months``: only for shorter ones (New Mexico: under a year).\n``later_months_rent`` from ``later_after_months`` into the tenancy (Pennsylvania: one month\nfrom the second year). ``variant_months``: another limit under facts the request cannot\nstate (California small landlords 2, Connecticut 62+ 1, North Carolina month-to-month 1.5,\nPortland last month's rent 1.5, ...): a deposit between the two is 'depends'."
+        "description": "The statutory deposit limit, computed (round 2 class 9).\n\n``effective_on`` / ``effective_by``: the cap applies to deposits collected (``collected``,\nCalifornia AB 12), deposits required (``required``, Colorado), or leases entered into or renewed (``lease_signed``, Georgia,\nMaryland) on or after the date; earlier ones keep ``before_months_rent`` (None: no cap) and\n``before_furnished_months``. ``furnished_months``: the cap for a furnished unit (Kansas);\n``furnished_exempt``: none for one (Delaware). ``max_rent_usd``: no cap above this rent\n(Alaska $2,000). ``min_term_months``: only for leases of at least this term (Delaware: one\nyear); ``max_term_months``: only for shorter ones (New Mexico: under a year).\n``later_months_rent`` from ``later_after_months`` into the tenancy (Pennsylvania: one month\nfrom the second year). ``variant_months``: another limit under facts the request cannot\nstate (California small landlords 2, Connecticut 62+ 1, North Carolina month-to-month 1.5,\nPortland last month's rent 1.5, ...): a deposit between the two is 'depends'."
       },
       "DepositCapCheck": {
         "properties": {
@@ -6196,6 +6245,45 @@
             ],
             "title": "Email",
             "description": "Only if you want a reply."
+          },
+          "source": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 64
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Source",
+            "description": "Optional self-reported source; not verified provenance."
+          },
+          "reporter": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 64
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Reporter",
+            "description": "Optional reporter type, for example human or agent; self-reported."
+          },
+          "agent_name": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 128
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Agent Name",
+            "description": "Optional agent label. Do not include personal details or secrets."
           },
           "estimate": {
             "anyOf": [
@@ -9178,6 +9266,16 @@
       },
       "Outcome": {
         "properties": {
+          "obligation_mode": {
+            "type": "string",
+            "enum": [
+              "all",
+              "alternative"
+            ],
+            "title": "Obligation Mode",
+            "description": "all: simultaneous duties; alternative: mutually exclusive full-refund or deduction-notice paths while deductions are unknown. For alternatives status says whether any path remains open; next_due is still the earliest conservative date.",
+            "default": "all"
+          },
           "status": {
             "type": "string",
             "enum": [
@@ -9484,6 +9582,18 @@
       },
       "PenaltyExposure": {
         "properties": {
+          "not_applicable_reason": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Not Applicable Reason",
+            "description": "Facts that rule out this monetary remedy. When present, estimated_max_usd is zero; this does not say whether a deposit remains held or owed."
+          },
           "applies_if": {
             "type": "string",
             "title": "Applies If"
@@ -9711,6 +9821,30 @@
             "type": "boolean",
             "title": "Per Violation",
             "default": false
+          },
+          "interest_only_multiple": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Interest Only Multiple"
+          },
+          "interest_only_fixed_usd": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Interest Only Fixed Usd"
           },
           "multiple_is_additional": {
             "type": "boolean",
@@ -12369,6 +12503,39 @@
               }
             ],
             "title": "Address Due Quote"
+          },
+          "lease_notice_address_counts": {
+            "type": "boolean",
+            "title": "Lease Notice Address Counts",
+            "default": false
+          },
+          "conditions": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Conditions"
+          },
+          "requires_mailing": {
+            "type": "boolean",
+            "title": "Requires Mailing",
+            "default": false
+          },
+          "late_address": {
+            "anyOf": [
+              {
+                "type": "string",
+                "const": "unsettled"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Late Address"
           }
         },
         "additionalProperties": false,
@@ -12921,7 +13088,8 @@
               }
             ],
             "title": "Tenancy Ended On",
-            "description": "When the tenancy actually ended (YYYY-MM-DD): the lease's end, or an earlier termination or accepted surrender. Deadlines that run from the end of the tenancy use it. For a tenant who left before the lease was due to end, send the scheduled end as lease_end_on (older callers sent it here, which still works: the deadline is then counted from it, with the move-out date as an earlier alternative where the facts point to one)."
+            "description": "When the tenancy actually ended (YYYY-MM-DD): the lease's end, or an earlier termination or accepted surrender. Deadlines that run from the end of the tenancy use it. For a tenant who left before the lease was due to end, send the scheduled end as lease_end_on (older callers sent it here, which still works: the deadline is then counted from it, with the move-out date as an earlier alternative where the facts point to one).",
+            "x-mcp-description": "Actual tenancy end: lease end, early termination or accepted surrender (YYYY-MM-DD). End-of-tenancy deadlines use this; send a different scheduled end as lease_end_on. Legacy scheduled ends still work, with an earlier move-out alternative where applicable."
           },
           "lease_end_on": {
             "anyOf": [
@@ -12934,7 +13102,8 @@
               }
             ],
             "title": "Lease End On",
-            "description": "Day the lease was scheduled to end (YYYY-MM-DD), when it differs from when the tenancy actually ended (a broken lease). Lost rent and lease-break charges run to it; deadlines do not (they follow tenancy_ended_on, else the move-out, with the scheduled end as a later alternative)."
+            "description": "Day the lease was scheduled to end (YYYY-MM-DD), when it differs from when the tenancy actually ended (a broken lease). Lost rent and lease-break charges run to it; deadlines do not (they follow tenancy_ended_on, else the move-out, with the scheduled end as a later alternative).",
+            "x-mcp-description": "Scheduled lease end (YYYY-MM-DD), if different from actual tenancy end. Lost rent/lease-break charges use it. Deadlines use tenancy_ended_on, else move-out; scheduled end remains a later alternative."
           },
           "vacated_on": {
             "type": "string",
@@ -12953,7 +13122,8 @@
               }
             ],
             "title": "Forwarding Address Received On",
-            "description": "Day you received the tenant's written forwarding address (YYYY-MM-DD). Several states start or hold the clock on it (Texas, Connecticut, Iowa, Minnesota)."
+            "description": "Day you received the tenant's written forwarding address (YYYY-MM-DD). Several states start or hold the clock on it (Texas, Connecticut, Iowa, Minnesota).",
+            "x-mcp-description": "Written forwarding address received (YYYY-MM-DD). Can start/hold clocks in TX, CT, IA, MN."
           },
           "tenant_gave_forwarding_address": {
             "anyOf": [
@@ -12965,7 +13135,8 @@
               }
             ],
             "title": "Tenant Gave Forwarding Address",
-            "description": "False when the tenant never gave a forwarding address in writing (not just 'not yet known'). Illinois, Pennsylvania, Ohio, Delaware, South Carolina and New Hampshire then relieve the landlord of the penalty. Implied true by forwarding_address_received_on."
+            "description": "False if no written forwarding address was ever given. IL, PA, OH, SC and NH may relieve the penalty; Delaware also accepts a tenant notice address in the lease. Implied true by forwarding_address_received_on.",
+            "x-mcp-description": "False: no written forwarding address ever given. May relieve penalties in IL/PA/OH/SC/NH; DE also accepts a lease notice address. forwarding_address_received_on implies true."
           },
           "demand_received_on": {
             "anyOf": [
@@ -12978,7 +13149,8 @@
               }
             ],
             "title": "Demand Received On",
-            "description": "Day you received the tenant's demand for the deposit (YYYY-MM-DD; written in Oklahoma, by first-class mail in Maryland 8-203(h)). Arizona, Kansas, Oklahoma, South Carolina and Mississippi start the clock on it."
+            "description": "Day you received the tenant's demand for the deposit (YYYY-MM-DD; written in Oklahoma, by first-class mail in Maryland 8-203(h)). Arizona, Kansas, Oklahoma, South Carolina and Mississippi start the clock on it.",
+            "x-mcp-description": "Deposit demand received (YYYY-MM-DD): written in OK; first-class mail in MD (8-203(h)). Starts clocks in AZ/KS/OK/SC/MS."
           },
           "new_tenant_moved_in_on": {
             "anyOf": [
@@ -12991,7 +13163,8 @@
               }
             ],
             "title": "New Tenant Moved In On",
-            "description": "Day a new tenant moved in, if the unit was re-rented (YYYY-MM-DD). West Virginia and Wisconsin can end the period earlier; rent claimed for days from it on is not recoverable (re-rent mitigation)."
+            "description": "Day a new tenant moved in, if the unit was re-rented (YYYY-MM-DD). West Virginia and Wisconsin can end the period earlier; rent claimed for days from it on is not recoverable (re-rent mitigation).",
+            "x-mcp-description": "Re-rented: new tenant's move-in date (YYYY-MM-DD). Can shorten WV/WI periods; rent overlapping the new tenancy is unrecoverable."
           },
           "new_tenant_rent_usd": {
             "anyOf": [
@@ -13022,7 +13195,8 @@
               }
             ],
             "title": "Statement Sent On",
-            "description": "Day you sent (or delivered) the itemized statement (YYYY-MM-DD). With it the statement is judged on time or late; documentation.itemized_statement alone cannot tell."
+            "description": "Day you sent (or delivered) the itemized statement (YYYY-MM-DD). With it the statement is judged on time or late; documentation.itemized_statement alone cannot tell.",
+            "x-mcp-description": "Itemized statement sent/delivered (YYYY-MM-DD), to assess timeliness; documentation.itemized_statement alone supplies no date."
           },
           "claim_notice_sent_on": {
             "anyOf": [
@@ -13035,7 +13209,8 @@
               }
             ],
             "title": "Claim Notice Sent On",
-            "description": "Day you sent the written notice of intent to impose a claim on the deposit (YYYY-MM-DD). Florida (due within 30 days of termination) and the District of Columbia (within 45 days): the balance is due 30 days after it; a late notice does not count."
+            "description": "Day you sent the written notice of intent to impose a claim on the deposit (YYYY-MM-DD). Florida (due within 30 days of termination) and the District of Columbia (within 45 days): the balance is due 30 days after it; a late notice does not count.",
+            "x-mcp-description": "Written claim notice sent (YYYY-MM-DD). FL: within 30 days of termination; DC:45. Balance due 30 days after timely notice; late notice does not count."
           },
           "lease_return_days": {
             "anyOf": [
@@ -13074,7 +13249,8 @@
               }
             ],
             "title": "Interest Paid Through",
-            "description": "Interest already paid or credited to the tenant up to this day (annual-payment rules: San Francisco, Los Angeles, Berkeley, Connecticut, Massachusetts, ...): interest is counted from it."
+            "description": "Interest already paid or credited to the tenant up to this day (annual-payment rules: San Francisco, Los Angeles, Berkeley, Connecticut, Massachusetts, ...): interest is counted from it.",
+            "x-mcp-description": "Interest already paid/credited through this date; accrual starts here (annual-payment rules, e.g. SF/LA/Berkeley/CT/MA)."
           },
           "nonstandard_provision_signed": {
             "anyOf": [
@@ -13104,7 +13280,8 @@
               }
             ],
             "title": "Pet Deposit Usd",
-            "description": "The part of deposit_usd that is a pet deposit (outside the cap in Missouri, Alabama, North Dakota and Saint Paul; allowed on top of it up to one month in Hawaii and Alaska, half a month in Kansas, a quarter in Nebraska)."
+            "description": "The part of deposit_usd that is a pet deposit (outside the cap in Missouri, Alabama, North Dakota and Saint Paul; allowed on top of it up to one month in Hawaii and Alaska, half a month in Kansas, a quarter in Nebraska).",
+            "x-mcp-description": "Pet portion of deposit_usd: outside caps in MO/AL/ND/Saint Paul; extra cap allowance of 1 month in HI/AK, half in KS, quarter in NE."
           },
           "tenant_age_62_plus": {
             "anyOf": [
@@ -13128,7 +13305,8 @@
               }
             ],
             "title": "Tenant Age 60 Plus",
-            "description": "A person 60 or older occupies the unit (New Hampshire 540-A:5, I: the owner-occupied exemption does not reach the unit). tenant_age_62_plus true implies it."
+            "description": "A person 60 or older occupies the unit (New Hampshire 540-A:5, I: the owner-occupied exemption does not reach the unit). tenant_age_62_plus true implies it.",
+            "x-mcp-description": "An occupant is 60+ (NH 540-A:5,I: owner-occupied exemption excluded). tenant_age_62_plus=true implies this."
           },
           "small_landlord": {
             "anyOf": [
@@ -13140,7 +13318,8 @@
               }
             ],
             "title": "Small Landlord",
-            "description": "California AB 12 small landlord (a natural person or an LLC of natural persons owning at most two properties with at most four units; not for a service member): a two-month cap."
+            "description": "California AB 12 small landlord (a natural person or an LLC of natural persons owning at most two properties with at most four units; not for a service member): a two-month cap.",
+            "x-mcp-description": "CA AB 12: natural person or LLC of natural persons, at most 2 properties containing at most 4 units total, tenant not a service member;2 month cap."
           },
           "owner_occupied": {
             "anyOf": [
@@ -13189,7 +13368,8 @@
               }
             ],
             "title": "Owner Is Natural Person",
-            "description": "Georgia only (44-7-36): the units are owned by a natural person (false: an LLC, corporation, partnership or trust owns them). The small-landlord exemption reaches only a natural person; not given, the statute is shown with the exemption as the alternative."
+            "description": "Georgia only (44-7-36): the units are owned by a natural person (false: an LLC, corporation, partnership or trust owns them). The small-landlord exemption reaches only a natural person; not given, the statute is shown with the exemption as the alternative.",
+            "x-mcp-description": "GA 44-7-36 only: true=natural-person owner; false=LLC/corporation/partnership/trust, which cannot claim small-landlord exemption. Omitted: exemption stays an alternative."
           },
           "deposit_in_separate_account": {
             "anyOf": [
@@ -13201,7 +13381,8 @@
               }
             ],
             "title": "Deposit In Separate Account",
-            "description": "Tennessee only (66-28-301(a)): the deposit was kept in a separate account used only for deposits. No account and no damage listing means none of it can be kept (66-28-301(c))."
+            "description": "Tennessee only (66-28-301(a)): the deposit was kept in a separate account used only for deposits. No account and no damage listing means none of it can be kept (66-28-301(c)).",
+            "x-mcp-description": "TN 66-28-301(a): deposit-only separate account. No account and no damage listing means none can be kept (c)."
           },
           "county": {
             "anyOf": [
@@ -13214,7 +13395,8 @@
               }
             ],
             "title": "County",
-            "description": "Tennessee only: the county the unit is in (the landlord-tenant act applies only in counties over 75,000 by the 2010 census, 66-28-102(a)). Taken from the city when it lies in one county."
+            "description": "Tennessee only: the county the unit is in (the landlord-tenant act applies only in counties over 75,000 by the 2010 census, 66-28-102(a)). Taken from the city when it lies in one county.",
+            "x-mcp-description": "TN county: act applies over 75,000 population by 2010 census (66-28-102(a)). Inferred from city only if unambiguous."
           },
           "renter_notice_served_on": {
             "anyOf": [
@@ -13227,7 +13409,8 @@
               }
             ],
             "title": "Renter Notice Served On",
-            "description": "Utah only (YYYY-MM-DD): day the renter served the 57-17-3(3) notice after the deadline passed. The owner then has five business days to comply (57-17-3(5)); without the notice there is no relief under 57-17-5."
+            "description": "Utah only (YYYY-MM-DD): day the renter served the 57-17-3(3) notice after the deadline passed. The owner then has five business days to comply (57-17-3(5)); without the notice there is no relief under 57-17-5.",
+            "x-mcp-description": "UT 57-17-3(3) renter notice served after deadline (YYYY-MM-DD). Owner gets 5 business days to comply (5); no notice means no 57-17-5 relief."
           },
           "landlord_filed_action_on": {
             "anyOf": [
@@ -13240,7 +13423,8 @@
               }
             ],
             "title": "Landlord Filed Action On",
-            "description": "Michigan only (YYYY-MM-DD): day the landlord sued for the damages claimed (554.613: sue or return the balance within 45 days). Not given: no suit assumed."
+            "description": "Michigan only (YYYY-MM-DD): day the landlord sued for the damages claimed (554.613: sue or return the balance within 45 days). Not given: no suit assumed.",
+            "x-mcp-description": "MI 554.613: date landlord sued for claimed damage (YYYY-MM-DD); sue or return balance within 45 days. Omitted assumes no suit."
           },
           "prepaid_rent_usd": {
             "anyOf": [
@@ -13258,7 +13442,8 @@
               }
             ],
             "title": "Prepaid Rent Usd",
-            "description": "Rent paid in advance beyond the first month, held besides deposit_usd. Counts toward the cap in AK, AZ, CA, CT, MD, MI and NY; earns interest in CT, MA (last month's rent), MD and Chicago; in Minneapolis it lowers the deposit cap to half a month. In UT its balance is returned with the deposit and counted in the refund (57-17-3(2)(b)): send only the unused part (rent already applied to a rental period is not a balance). Elsewhere the refund covers the deposit only and a warning says unused prepaid rent is owed back too."
+            "description": "Rent paid in advance beyond the first month, held besides deposit_usd. Counts toward the cap in AK, AZ, CA, CT, MD, MI and NY; earns interest in CT, MA (last month's rent), MD and Chicago; in Minneapolis it lowers the deposit cap to half a month. In UT its balance is returned with the deposit and counted in the refund (57-17-3(2)(b)): send only the unused part (rent already applied to a rental period is not a balance). Elsewhere the refund covers the deposit only and a warning says unused prepaid rent is owed back too.",
+            "x-mcp-description": "Advance rent beyond first month, held besides deposit_usd. Counts in AK/AZ/CA/CT/MD/MI/NY caps; earns interest in CT/MA(last-month rent)/MD/Chicago; Minneapolis cap becomes half-month. UT: send only unused balance, added to refund (57-17-3(2)(b)); elsewhere refund is deposit-only with prepaid-return warning."
           },
           "tenancy_type": {
             "anyOf": [
@@ -13274,7 +13459,8 @@
               }
             ],
             "title": "Tenancy Type",
-            "description": "written_lease or at_will (Maine 6033(2): a written agreement's period, at most 30 days, or 21 days for a tenancy at will; Massachusetts 15B(4): at will, 30 days after the move-out, a written lease, 30 days after its end). Left out with a move-out before tenancy_ended_on: the earlier (at-will) date leads and the other is listed."
+            "description": "written_lease or at_will (Maine 6033(2): a written agreement's period, at most 30 days, or 21 days for a tenancy at will; Massachusetts 15B(4): at will, 30 days after the move-out, a written lease, 30 days after its end). Left out with a move-out before tenancy_ended_on: the earlier (at-will) date leads and the other is listed.",
+            "x-mcp-description": "written_lease or at_will. ME 6033(2): written period<=30 days, at-will 21. MA 15 B(4):30 days from move-out(at-will) or lease end(written). Omitted when vacated_on precedes tenancy_ended_on: earlier at-will date leads; other date listed."
           },
           "tenant_abandoned": {
             "anyOf": [
@@ -13286,7 +13472,8 @@
               }
             ],
             "title": "Tenant Abandoned",
-            "description": "The tenant abandoned the unit or was evicted (Maryland 8-203(h): the clock runs from the tenant's written demand; Washington 59.18.280: from when the landlord learns of it; Louisiana 9:3251(C): the one-month rule does not apply). Left out: inferred from tenant_gave_proper_notice: false; with a move-out before tenancy_ended_on the earlier abandonment clock leads and the other date is listed."
+            "description": "The tenant abandoned the unit or was evicted (Maryland 8-203(h): the clock runs from the tenant's written demand; Washington 59.18.280: from when the landlord learns of it; Louisiana 9:3251(C): the one-month rule does not apply). Left out: inferred from tenant_gave_proper_notice: false; with a move-out before tenancy_ended_on the earlier abandonment clock leads and the other date is listed.",
+            "x-mcp-description": "Abandoned or evicted: MD 8-203(h) clock starts at written demand; WA 59.18.280 at landlord awareness; LA 9:3251(C) one-month rule excluded. Omitted: inferred from tenant_gave_proper_notice=false. If vacated_on precedes tenancy_ended_on, earlier abandonment clock leads; other date listed."
           },
           "contractor_needed": {
             "anyOf": [
@@ -13300,6 +13487,31 @@
             "title": "Contractor Needed",
             "description": "Damage exceeds the deposit and needs a third-party contractor, and you said so in writing in time (Virginia, West Virginia: 15 more days)."
           },
+          "colorado_post_closing_occupancy": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Colorado Post Closing Occupancy",
+            "description": "Colorado: buyer-landlord bought this residence from seller-tenant; both executed purchase-contract post-closing occupancy before the deposit was required. True confirms all facts; false excludes; null unknown. Exception from 2027-01-01."
+          },
+          "deposit_required_on": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Deposit Required On",
+            "description": "Colorado cap: date submission was required. Collection, move-out and as_of cannot establish the 2027 exception."
+          },
           "deposit_collected_on": {
             "anyOf": [
               {
@@ -13311,7 +13523,7 @@
               }
             ],
             "title": "Deposit Collected On",
-            "description": "Day the deposit was collected (YYYY-MM-DD); defaults to move_in_on. California (AB 12, from 2024-07-01) and Colorado caps depend on it."
+            "description": "Collection date; defaults to move_in_on. CA AB12 uses it. CO: proxy only if deposit_required_on is absent; never proves the exception."
           },
           "lease_signed_or_renewed_on": {
             "anyOf": [
@@ -13324,7 +13536,8 @@
               }
             ],
             "title": "Lease Signed Or Renewed On",
-            "description": "Day the current lease was signed or last renewed (YYYY-MM-DD). Georgia (2024-07-01) and Maryland (2024-10-01) caps apply to leases from then; defaults to move_in_on, with a warning that a later renewal may bring the new cap."
+            "description": "Day the current lease was signed or last renewed (YYYY-MM-DD). Georgia (2024-07-01) and Maryland (2024-10-01) caps apply to leases from then; defaults to move_in_on, with a warning that a later renewal may bring the new cap.",
+            "x-mcp-description": "Current lease signing/last renewal (YYYY-MM-DD). GA cap from 2024-07-01; MD from 2024-10-01. Defaults move_in_on; warns later renewal may activate cap."
           },
           "lease_term_months": {
             "anyOf": [
@@ -13362,7 +13575,8 @@
               }
             ],
             "title": "Rent Ordinance Covered",
-            "description": "The unit is covered by the city's rent ordinance (Los Angeles RSO, Berkeley Rent Ordinance). Their deposit interest is owed only then; unknown: the amount is shown beside the refund, not in it."
+            "description": "The unit is covered by the city's rent ordinance (Los Angeles RSO, Berkeley Rent Ordinance). Their deposit interest is owed only then; unknown: the amount is shown beside the refund, not in it.",
+            "x-mcp-description": "Covered by LA RSO or Berkeley Rent Ordinance: required for their deposit interest. Unknown interest stays beside, not inside, refund."
           },
           "interest_rate_percent": {
             "anyOf": [
@@ -13380,7 +13594,8 @@
               }
             ],
             "title": "Interest Rate Percent",
-            "description": "Annual rate the deposit account paid, where the law sets interest at the bank's rate (New Jersey, North Dakota, New Hampshire, New York, Pennsylvania, Portland), or caps it (Massachusetts: 5% or the bank's lesser rate). Without it bank-rate interest is unknown. Illinois 765 ILCS 715 uses IDFPR's published rate instead."
+            "description": "Annual rate the deposit account paid, where the law sets interest at the bank's rate (New Jersey, North Dakota, New Hampshire, New York, Pennsylvania, Portland), or caps it (Massachusetts: 5% or the bank's lesser rate). Without it bank-rate interest is unknown. Illinois 765 ILCS 715 uses IDFPR's published rate instead.",
+            "x-mcp-description": "Annual deposit-bank rate: NJ/ND/NH/NY/PA/Portland; MA uses lesser of bank rate or 5%. Omitted bank rate is unknown. IL 765 ILCS 715 uses published IDFPR rate instead."
           },
           "deductions": {
             "items": {
@@ -13389,7 +13604,7 @@
             "type": "array",
             "maxItems": 50,
             "title": "Deductions",
-            "description": "What you intend to deduct (or, for a tenant, what the landlord listed). An explicit empty list means nothing is deducted (it decides the shorter no-deduction periods, e.g. Montana 10 days, Alaska 14); leave it out when that is not known yet."
+            "description": "Charges to deduct (or the landlord's list). Explicit [] means no deductions and selects shorter periods (MT10 days, AK14); omit when unknown."
           },
           "returned": {
             "anyOf": [
@@ -13400,7 +13615,8 @@
                 "type": "null"
               }
             ],
-            "description": "What the landlord has returned so far and when. With it, timeliness says whether the refund and the itemized statement were on time and how many days late."
+            "description": "What the landlord has returned so far and when. With it, timeliness says whether the refund and the itemized statement were on time and how many days late.",
+            "x-mcp-description": "Prior refund/statement and date; timeliness assesses each duty and days late."
           },
           "documentation": {
             "$ref": "#/components/schemas/Documentation",
@@ -13410,7 +13626,7 @@
             "type": "string",
             "format": "date",
             "title": "As Of",
-            "description": "Today's date (YYYY-MM-DD) for the deadline status. Defaults to today (UTC); send it for repeatable results."
+            "description": "Date for deadline status; defaults to today (UTC). Send YYYY-MM-DD for repeatable results."
           }
         },
         "additionalProperties": false,

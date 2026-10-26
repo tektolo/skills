@@ -72,6 +72,12 @@ signs the statement.
    2010 census), `renter_notice_served_on` (Utah: the owner then has five business days),
    `landlord_filed_action_on` (Michigan: a suit for the damages within 45 days; not given, none
    is assumed).
+   For Colorado, send `deposit_required_on` (the actual day submission was required) and
+   `colorado_post_closing_occupancy`: true only when the buyer-landlord bought this residence
+   from the seller-tenant and both executed a post-closing occupancy agreement under that
+   purchase contract before the requirement. Ordinary leases are false; unknown facts stay
+   null. C.R.S. 38-12-102.5(2) exempts only qualifying requirements from 2027-01-01; later
+   collection or move-out alone does not establish it. Check the linked act in the result.
 3. `deductions`: one per charge, with `category` (`unpaid_rent`, `unpaid_utilities`,
    `cleaning`, `carpet`, `flooring`, `paint`, `blinds_window_coverings`, `appliance`,
    `fixture_or_hardware`, `wall_or_door_repair`, `key_or_lock`, `late_fees`,
