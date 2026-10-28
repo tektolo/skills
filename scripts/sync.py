@@ -24,6 +24,8 @@ PLUGIN = ROOT / "plugins" / "tektolo"
 UA = "tektolo-skills-sync/1 (+https://github.com/tektolo/skills)"
 README_START = "<!-- tools:start -->"
 README_END = "<!-- tools:end -->"
+# Site links in the README carry this repo's attribution tag (tektolo-platform docs/listings/ref-tags.md).
+REF = "github-skills"
 
 
 def fetch(url: str) -> bytes | None:
@@ -49,6 +51,14 @@ def write(path: Path, data: bytes | str) -> bool:
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_bytes(data)
     return True
+
+
+def tagged(url: str) -> str:
+    """``url`` with ``ref=github-skills`` (kept if it already has a ``ref``), before any fragment."""
+    base, hash_, frag = url.partition("#")
+    if re.search(r"[?&]ref=", base):
+        return url
+    return f"{base}{'&' if '?' in base else '?'}ref={REF}{hash_}{frag}"
 
 
 def pretty(raw: bytes) -> str:
@@ -101,11 +111,11 @@ def main() -> int:
                 put(ROOT / "examples" / cid / op["id"] / f"{stem}.json", pretty(json.dumps(ex["input"]).encode()))
         links = cap.get("links", {})
         tools = ", ".join(f"`{op['mcp_tool']}`" for op in cap.get("operations", []) if op.get("mcp_tool"))
-        web = f"[web tool]({links['web_tool']})" if links.get("web_tool") else ""
+        web = f"[web tool]({tagged(links['web_tool'])})" if links.get("web_tool") else ""
         skill_link = f"[skill](skills/{cid}/SKILL.md)" if cid in live_skills else ""
         rows.append(
             f"| **{cap['name']}** | {cap['summary']} | {tools} | "
-            + " · ".join(x for x in [web, f"[reference]({links.get('page', base)})", skill_link] if x)
+            + " · ".join(x for x in [web, f"[reference]({tagged(links.get('page', base))})", skill_link] if x)
             + " |"
         )
 
@@ -128,7 +138,7 @@ def main() -> int:
             "|---|---|---|---|",
             *rows,
             "",
-            f"Pricing: {model} Details: {base}/pricing",
+            f"Pricing: {model} Details: {tagged(base + '/pricing')}",
             README_END,
         ]
     )

@@ -4,9 +4,9 @@
   "author": {
     "name": "Tektolo",
     "email": "hello@tektolo.com",
-    "url": "https://tektolo.com"
+    "url": "https://tektolo.com/?ref=claude-plugin"
   },
-  "homepage": "https://tektolo.com",
+  "homepage": "https://tektolo.com/?ref=claude-plugin",
   "repository": "https://github.com/tektolo/skills",
   "license": "MIT-0",
   "keywords": ["rental property", "property management", "security deposit", "turnover", "landlord", "tenant", "mcp"]
