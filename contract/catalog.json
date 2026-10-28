@@ -91,14 +91,14 @@
       "capability": "deposit-settlement",
       "description": "The security deposit rules for all 50 US states and the District of Columbia, plus 9 city ordinances, as open data under CC BY 4.0: the deadline to return a deposit and what starts it, the itemized statement and documentation duties, the deductions each statute allows, interest, penalties, forfeiture and deposit caps. Every row cites the statute or ordinance, quotes the text and links to the official source with the date it was last read. Generated from the ruleset the Tektolo deposit settlement tool runs on.",
       "page": "https://tektolo.com/data/deposit-rules/",
-      "version": "sd-2027.1.17",
-      "ruleset_hash": "sha256:54ca5a637711f8810e7e667a0a86e5bf8062e4ed3f552fb4e358f78afa4fb9a2",
-      "date_modified": "2026-10-25",
+      "version": "sd-2027.1.18",
+      "ruleset_hash": "sha256:7775b4cb2bb5e2afcaedbe5e797657cfe1d7c34548ac54a4f6c7460ff0668082",
+      "date_modified": "2026-10-27",
       "license": {
         "id": "CC-BY-4.0",
         "url": "https://creativecommons.org/licenses/by/4.0/"
       },
-      "citation": "Tektolo. Security deposit rules by US state and city, version sd-2027.1.17. https://tektolo.com/data/deposit-rules/. Licensed under CC BY 4.0.",
+      "citation": "Tektolo. Security deposit rules by US state and city, version sd-2027.1.18. https://tektolo.com/data/deposit-rules/. Licensed under CC BY 4.0.",
       "rows": 60,
       "files": {
         "csv": "https://tektolo.com/data/deposit-rules/latest/deposit-rules.csv",
@@ -2593,8 +2593,8 @@
         "Some rule text is summarised rather than quoted; each citation says which."
       ],
       "ruleset": {
-        "version": "sd-2027.1.17",
-        "hash": "sha256:54ca5a637711f8810e7e667a0a86e5bf8062e4ed3f552fb4e358f78afa4fb9a2",
+        "version": "sd-2027.1.18",
+        "hash": "sha256:7775b4cb2bb5e2afcaedbe5e797657cfe1d7c34548ac54a4f6c7460ff0668082",
         "sources": [
           {
             "id": "al.code-35-9a-201",
@@ -3355,6 +3355,12 @@
           {
             "id": "sc.27-40-410",
             "title": "S.C. Code tit. 27 ch. 40 (Residential Landlord and Tenant Act), sec. 27-40-410",
+            "publisher": "South Carolina Legislature",
+            "url": "https://www.scstatehouse.gov/code/t27c040.php"
+          },
+          {
+            "id": "sc.27-40-350",
+            "title": "S.C. Code tit. 27 ch. 40 (Residential Landlord and Tenant Act), sec. 27-40-350 and 27-40-210(19)-(20)",
             "publisher": "South Carolina Legislature",
             "url": "https://www.scstatehouse.gov/code/t27c040.php"
           },

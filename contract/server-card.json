@@ -74,7 +74,7 @@
         {
           "id": "deposit-settlement",
           "contract_version": "0.1.0",
-          "ruleset_hash": "sha256:54ca5a637711f8810e7e667a0a86e5bf8062e4ed3f552fb4e358f78afa4fb9a2",
+          "ruleset_hash": "sha256:7775b4cb2bb5e2afcaedbe5e797657cfe1d7c34548ac54a4f6c7460ff0668082",
           "domain": "rental-property",
           "audiences": [
             "landlord_pm",
