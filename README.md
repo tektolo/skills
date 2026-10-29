@@ -44,6 +44,12 @@ npx skills add tektolo/skills
 
 **OpenClaw:** both skills are also on [ClawHub](https://clawhub.ai) under `@tektolo`.
 
+**Gemini CLI:** this repository is also a Gemini CLI extension. One command installs both skills and the MCP server:
+
+```bash
+gemini extensions install https://github.com/tektolo/skills
+```
+
 ## Use it over REST
 
 Every MCP tool is also a plain JSON endpoint. [`contract/openapi.json`](contract/openapi.json) describes them, and [`contract/catalog.json`](contract/catalog.json) lists every operation with its schemas, pricing, privacy notes and ruleset hash. Request bodies that work are in [`examples/`](examples/):
@@ -61,6 +67,7 @@ curl -sS https://tektolo.com/v1/deposit-settlement/settle \
 | `skills/<tool>/SKILL.md` | agent skills (the open SKILL.md format) |
 | `plugins/tektolo/` | Claude Code plugin: the same skills plus `.mcp.json` |
 | `.claude-plugin/marketplace.json` | makes this repo a Claude Code plugin marketplace |
+| `gemini-extension.json`, `GEMINI.md` | make this repo a Gemini CLI extension (the skills in `skills/` plus the MCP server) |
 | `contract/` | `catalog.json`, `openapi.json`, the MCP server card and `llms.txt`, as served |
 | `examples/` | request bodies taken from the catalog |
 

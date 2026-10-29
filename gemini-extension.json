@@ -1,0 +1,11 @@
+{
+  "name": "tektolo",
+  "version": "1.0.0",
+  "description": "Priced make-ready estimates for US rental turnovers and security deposit settlement under each state's statute. Rules-based, with every rule cited.",
+  "contextFileName": "GEMINI.md",
+  "mcpServers": {
+    "tektolo": {
+      "httpUrl": "https://tektolo.com/mcp/rental-property"
+    }
+  }
+}
