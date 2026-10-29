@@ -19,7 +19,7 @@ Pricing: Try every tool free. Agents and software get a free tier of 20 calls a 
 
 ## Use it from your AI assistant
 
-The MCP server is `https://tektolo.com/mcp?ref=github-skills`. It uses streamable HTTP and needs no account. For your own free allowance behind Claude's or ChatGPT's shared servers, get a personal connector URL at [tektolo.com/connect-your-ai](https://tektolo.com/connect-your-ai?ref=github-skills).
+The MCP server is `https://tektolo.com/mcp/rental-property?ref=github-skills`. It uses streamable HTTP and needs no account. For your own free allowance behind Claude's or ChatGPT's shared servers, get a personal connector URL at [tektolo.com/connect-your-ai](https://tektolo.com/connect-your-ai?ref=github-skills).
 
 **Claude Code**: install the plugin, which bundles the skills and the MCP server:
 
@@ -31,7 +31,7 @@ claude plugin install tektolo@tektolo
 Or connect only the server:
 
 ```bash
-claude mcp add --transport http tektolo "https://tektolo.com/mcp?ref=github-skills"
+claude mcp add --transport http tektolo "https://tektolo.com/mcp/rental-property?ref=github-skills"
 ```
 
 **Skills for any agent that reads `SKILL.md`** (Claude Code, Codex, Cursor, Gemini CLI, Copilot and others):
