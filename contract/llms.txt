@@ -9,6 +9,11 @@ Tools are grouped by domain (the world a tool operates in); each lists its audie
 Free tools for the move-out: what the turn costs, what to return from the deposit, and whether a deposit came back on time. For small landlords, property managers, tenants and the AI agents working for them.
 
 - [Rental property hub](https://tektolo.com/tools/rental-property/): the tools in order and coverage
+- [Small-landlord guide](https://tektolo.com/tools/rental-property/small-landlords): for landlords with a few units: what a turn (make-ready) costs, which deposit deductions are allowed, when the deposit is due, and a worked 2-bedroom example computed by both tools
+- [Turnover or inspection estimate](https://tektolo.com/tools/rental-property/turnover-vs-inspection-estimate): which estimate a landlord needs: an inspection repair estimate before buying (roof, HVAC, foundation; RealReports, RehabLens, Comarketing) or a turnover estimate between tenants (paint, carpet, cleaning, make-ready; the deposit)
+- [Charging a tenant for carpet](https://tektolo.com/tools/rental-property/charge-tenant-for-carpet): how much a landlord can charge a tenant for carpet: wear or damage, proration by useful life, a worked example computed by both tools and the states with their own rule
+- [Charging a tenant for paint](https://tektolo.com/tools/rental-property/charge-tenant-for-paint): how much a landlord can charge a tenant for paint: wear or damage, proration by useful life, a worked example computed by both tools and the states with their own rule
+- [Charging a tenant for blinds](https://tektolo.com/tools/rental-property/charge-tenant-for-blinds): how much a landlord can charge a tenant for blinds: wear or damage, proration by useful life, a worked example computed by both tools and the states with their own rule
 - Workflow move-out: 1. Property turnover estimate -> 2. Deposit settlement
 - [Property turnover estimate](https://tektolo.com/capabilities/property-turnover): Turn move-out inspection findings into a priced, vendor-ready make-ready scope. (experimental; domain: rental-property; audiences: landlord_pm, ai_agent; workflow: move-out step 1)
   - Questions it answers: make ready cost; how much to get an apartment ready after a tenant moves out; move-out repair estimate; unit turn scope of work; cost to paint and clean a rental; carpet replacement cost; punch list from inspection notes; rental repair cost by ZIP code; turnover tool for a few apartments I own; apartment turnover cost estimate
@@ -33,7 +38,7 @@ Reference pages, not tools: pages to read and cite, computed by the same engines
 
 Datasets under CC BY 4.0 (credit Tektolo, tektolo.com, with the version), built from the same rulesets as the tools. Index: https://tektolo.com/data/
 
-- [Security deposit rules by US state and city](https://tektolo.com/data/deposit-rules/): version sd-2027.1.18, 60 jurisdictions; [CSV](https://tektolo.com/data/deposit-rules/latest/deposit-rules.csv), [JSON](https://tektolo.com/data/deposit-rules/latest/deposit-rules.json), [datapackage.json](https://tektolo.com/data/deposit-rules/latest/datapackage.json)
+- [Security deposit rules by US state and city](https://tektolo.com/data/deposit-rules/): version sd-2027.1.21, 60 jurisdictions; [CSV](https://tektolo.com/data/deposit-rules/latest/deposit-rules.csv), [JSON](https://tektolo.com/data/deposit-rules/latest/deposit-rules.json), [datapackage.json](https://tektolo.com/data/deposit-rules/latest/datapackage.json)
 
 ## Pages
 

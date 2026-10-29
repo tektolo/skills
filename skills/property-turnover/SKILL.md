@@ -34,7 +34,9 @@ findings the AI read before you quote a number.
 
 ## How to call it
 
-- **MCP** (preferred in assistants): add the remote server `https://tektolo.com/mcp`. Start with
+- **MCP** (preferred in assistants): add the remote server
+  `https://tektolo.com/mcp/rental-property` (the rental-property tools only; `https://tektolo.com/mcp`
+  serves every Tektolo tool and keeps working). Start with
   `property_turnover_quick_estimate` (zip, bedrooms, bathrooms and `issues` as plain
   strings); use `property_turnover_scope` for rooms, measured quantities, rate cards and
   decisions. `property_turnover_issue_codes` with no arguments lists every code and group;
@@ -268,7 +270,7 @@ Tektolo does not look at photos. You do, then you send findings and the engine p
   they come back only when you call with `audit: true` (REST always returns them).
 - If a call says the daily free limit is reached, tell the user when it resets (the message
   names the time) and do not retry. On a hosted assistant (Claude, ChatGPT) the shared server
-  URL has one limit for everyone; the message names the page for a free personal connector URL.
+  URL has one limit for everyone; the message names the page for a free connector URL with its own allowance.
   Volume and integrations go through the Contact page.
 
 ## Make it yours

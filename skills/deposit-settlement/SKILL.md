@@ -33,8 +33,10 @@ signs the statement.
 
 ## How to call it
 
-- **MCP** (preferred in assistants): `deposit_settlement_settle` with the request below;
-  `deposit_settlement_rules` with `{"state": "IL", "city": "Chicago"}`.
+- **MCP** (preferred in assistants): add the remote server
+  `https://tektolo.com/mcp/rental-property` (the rental-property tools only; `https://tektolo.com/mcp`
+  serves every Tektolo tool and keeps working). Call `deposit_settlement_settle` with the
+  request below; `deposit_settlement_rules` with `{"state": "IL", "city": "Chicago"}`.
 - **REST**: `POST https://tektolo.com/v1/deposit-settlement/settle` (and `/rules`).
 - Catalog and schemas: `https://tektolo.com/catalog.json`,
   `https://tektolo.com/capabilities/deposit-settlement`.
@@ -141,7 +143,7 @@ signs the statement.
   they come back only when you call with `audit: true` (REST always returns them).
 - If a call says the daily free limit is reached, tell the user when it resets and do not
   retry; `deposit_settlement_rules` still works. The message names the page for a free
-  personal connector URL when the user shares a hosted assistant's limit.
+  connector URL with its own allowance when the user shares a hosted assistant's limit.
 - `outcome` is the one answer the summary is worded from: `owed_now_usd` (what is still owed
   to the tenant, net of what came back), `next_due` and `stages` (each step's date and status:
   met, late, short, overdue, due today, upcoming), and `uncertain` (what the answer still turns

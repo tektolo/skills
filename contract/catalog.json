@@ -91,14 +91,14 @@
       "capability": "deposit-settlement",
       "description": "The security deposit rules for all 50 US states and the District of Columbia, plus 9 city ordinances, as open data under CC BY 4.0: the deadline to return a deposit and what starts it, the itemized statement and documentation duties, the deductions each statute allows, interest, penalties, forfeiture and deposit caps. Every row cites the statute or ordinance, quotes the text and links to the official source with the date it was last read. Generated from the ruleset the Tektolo deposit settlement tool runs on.",
       "page": "https://tektolo.com/data/deposit-rules/",
-      "version": "sd-2027.1.18",
-      "ruleset_hash": "sha256:7775b4cb2bb5e2afcaedbe5e797657cfe1d7c34548ac54a4f6c7460ff0668082",
-      "date_modified": "2026-10-27",
+      "version": "sd-2027.1.21",
+      "ruleset_hash": "sha256:850a003143a934714fec4acc5f489f8e7ecbe3b0cb6955c6871a81199772c282",
+      "date_modified": "2026-10-28",
       "license": {
         "id": "CC-BY-4.0",
         "url": "https://creativecommons.org/licenses/by/4.0/"
       },
-      "citation": "Tektolo. Security deposit rules by US state and city, version sd-2027.1.18. https://tektolo.com/data/deposit-rules/. Licensed under CC BY 4.0.",
+      "citation": "Tektolo. Security deposit rules by US state and city, version sd-2027.1.21. https://tektolo.com/data/deposit-rules/. Licensed under CC BY 4.0.",
       "rows": 60,
       "files": {
         "csv": "https://tektolo.com/data/deposit-rules/latest/deposit-rules.csv",
@@ -2593,8 +2593,8 @@
         "Some rule text is summarised rather than quoted; each citation says which."
       ],
       "ruleset": {
-        "version": "sd-2027.1.18",
-        "hash": "sha256:7775b4cb2bb5e2afcaedbe5e797657cfe1d7c34548ac54a4f6c7460ff0668082",
+        "version": "sd-2027.1.21",
+        "hash": "sha256:850a003143a934714fec4acc5f489f8e7ecbe3b0cb6955c6871a81199772c282",
         "sources": [
           {
             "id": "al.code-35-9a-201",
@@ -2618,25 +2618,25 @@
             "id": "ar.code-18-16-303",
             "title": "Arkansas Code 18-16-303 Applicability (small-landlord exemption)",
             "publisher": "LexisNexis public access for the State (linked from arkleg.state.ar.us)",
-            "url": "https://advance.lexis.com/documentpage/?pdmfid=1000516&pddocfullpath=%2Fshared%2Fdocument%2Fstatutes-legislation%2Furn%3AcontentItem%3A4WVF-V6X0-R03K-B00M-00008-00&pdcontentcomponentid=234170"
+            "url": "https://www.lexisnexis.com/hottopics/arcode/"
           },
           {
             "id": "ar.code-18-16-304",
             "title": "Arkansas Code 18-16-304 Limitation on amount",
             "publisher": "LexisNexis public access for the State (linked from arkleg.state.ar.us)",
-            "url": "https://advance.lexis.com/documentpage/?pdmfid=1000516&pddocfullpath=%2Fshared%2Fdocument%2Fstatutes-legislation%2Furn%3AcontentItem%3A4WVF-V6X0-R03K-B00N-00008-00&pdcontentcomponentid=234170"
+            "url": "https://www.lexisnexis.com/hottopics/arcode/"
           },
           {
             "id": "ar.code-18-16-305",
             "title": "Arkansas Code 18-16-305 Return of deposit",
             "publisher": "LexisNexis public access for the State (linked from arkleg.state.ar.us)",
-            "url": "https://advance.lexis.com/documentpage/?pdmfid=1000516&pddocfullpath=%2Fshared%2Fdocument%2Fstatutes-legislation%2Furn%3AcontentItem%3A4WVF-V6X0-R03K-B00P-00008-00&pdcontentcomponentid=234170"
+            "url": "https://www.lexisnexis.com/hottopics/arcode/"
           },
           {
             "id": "ar.code-18-16-306",
             "title": "Arkansas Code 18-16-306 Noncompliance by landlord",
             "publisher": "LexisNexis public access for the State (linked from arkleg.state.ar.us)",
-            "url": "https://advance.lexis.com/documentpage/?pdmfid=1000516&pddocfullpath=%2Fshared%2Fdocument%2Fstatutes-legislation%2Furn%3AcontentItem%3A4WVF-V6X0-R03K-B00R-00008-00&pdcontentcomponentid=234170"
+            "url": "https://www.lexisnexis.com/hottopics/arcode/"
           },
           {
             "id": "ar.ezel-survey",
@@ -2804,31 +2804,31 @@
             "id": "ga.ocga-44-7-34",
             "title": "O.C.G.A. 44-7-34 Return of security deposit",
             "publisher": "LexisNexis public access for the State (linked from legis.ga.gov)",
-            "url": "https://advance.lexis.com/documentpage/?pdmfid=1000516&pddocfullpath=%2Fshared%2Fdocument%2Fstatutes-legislation%2Furn%3AcontentItem%3A6348-FYW1-DYB7-W0XS-00008-00&pdcontentcomponentid=234186"
+            "url": "https://www.lexisnexis.com/hottopics/gacode/"
           },
           {
             "id": "ga.ocga-44-7-33",
             "title": "O.C.G.A. 44-7-33 Move-in and move-out damage lists",
             "publisher": "LexisNexis public access for the State (linked from legis.ga.gov)",
-            "url": "https://advance.lexis.com/documentpage/?pdmfid=1000516&pddocfullpath=%2Fshared%2Fdocument%2Fstatutes-legislation%2Furn%3AcontentItem%3A6348-FYW1-DYB7-W0XR-00008-00&pdcontentcomponentid=234186"
+            "url": "https://www.lexisnexis.com/hottopics/gacode/"
           },
           {
             "id": "ga.ocga-44-7-35",
             "title": "O.C.G.A. 44-7-35 Landlord's liability",
             "publisher": "LexisNexis public access for the State (linked from legis.ga.gov)",
-            "url": "https://advance.lexis.com/documentpage/?pdmfid=1000516&pddocfullpath=%2Fshared%2Fdocument%2Fstatutes-legislation%2Furn%3AcontentItem%3A6348-FYW1-DYB7-W0XT-00008-00&pdcontentcomponentid=234186"
+            "url": "https://www.lexisnexis.com/hottopics/gacode/"
           },
           {
             "id": "ga.ocga-44-7-36",
             "title": "O.C.G.A. 44-7-36 Exemption for small owners",
             "publisher": "LexisNexis public access for the State (linked from legis.ga.gov)",
-            "url": "https://advance.lexis.com/documentpage/?pdmfid=1000516&pddocfullpath=%2Fshared%2Fdocument%2Fstatutes-legislation%2Furn%3AcontentItem%3A6348-FYW1-DYB7-W0XV-00008-00&pdcontentcomponentid=234186"
+            "url": "https://www.lexisnexis.com/hottopics/gacode/"
           },
           {
             "id": "ga.ocga-44-7-30.1",
             "title": "O.C.G.A. 44-7-30.1 Limitation on amount of security deposit (HB 404)",
             "publisher": "LexisNexis public access for the State (linked from legis.ga.gov)",
-            "url": "https://advance.lexis.com/documentpage/?pdmfid=1000516&pddocfullpath=%2Fshared%2Fdocument%2Fstatutes-legislation%2Furn%3AcontentItem%3A6BWC-RM23-RW01-C4CF-00008-00&pdcontentcomponentid=234186"
+            "url": "https://www.lexisnexis.com/hottopics/gacode/"
           },
           {
             "id": "hi.hrs-521-44",
@@ -3128,7 +3128,7 @@
             "id": "ms.89-8-21",
             "title": "Miss. Code Ann. 89-8-21",
             "publisher": "LexisNexis public access for the State (linked from legislature.ms.gov)",
-            "url": "https://advance.lexis.com/documentpage/?pdmfid=1000516&pddocfullpath=%2Fshared%2Fdocument%2Fstatutes-legislation%2Furn%3AcontentItem%3A8P6B-8962-D6RV-H4CS-00008-00&pdcontentcomponentid=234190"
+            "url": "https://www.lexisnexis.com/hottopics/mscode/"
           },
           {
             "id": "ezel.ms",
@@ -3386,13 +3386,13 @@
             "id": "tn.66-28-301",
             "title": "Tenn. Code Ann. 66-28-301 Security deposits",
             "publisher": "LexisNexis public access for the State (linked from capitol.tn.gov)",
-            "url": "https://advance.lexis.com/documentpage/?pdmfid=1000516&pddocfullpath=%2Fshared%2Fdocument%2Fstatutes-legislation%2Furn%3AcontentItem%3A4X8K-W720-R03N-S4MB-00008-00&pdcontentcomponentid=234179"
+            "url": "https://www.lexisnexis.com/hottopics/tncode/"
           },
           {
             "id": "tn.66-28-102",
             "title": "Tenn. Code Ann. 66-28-102 Applicability",
             "publisher": "LexisNexis public access for the State (linked from capitol.tn.gov)",
-            "url": "https://advance.lexis.com/documentpage/?pdmfid=1000516&pddocfullpath=%2Fshared%2Fdocument%2Fstatutes-legislation%2Furn%3AcontentItem%3A62NR-T7R0-R03K-F1S1-00008-00&pdcontentcomponentid=234179"
+            "url": "https://www.lexisnexis.com/hottopics/tncode/"
           },
           {
             "id": "ezel.tn-deadline",
@@ -3992,7 +3992,7 @@
             "id": "ga.ocga-1-3-1",
             "title": "O.C.G.A. 1-3-1(d)(3) (computation of time)",
             "publisher": "LexisNexis public access for the State (linked from legis.ga.gov)",
-            "url": "https://advance.lexis.com/documentpage/?pdmfid=1000516&pddocfullpath=%2Fshared%2Fdocument%2Fstatutes-legislation%2Furn%3AcontentItem%3A6348-FR61-DYB7-W4C0-00008-00&pdcontentcomponentid=234186"
+            "url": "https://www.lexisnexis.com/hottopics/gacode/"
           },
           {
             "id": "hi.time-computation",

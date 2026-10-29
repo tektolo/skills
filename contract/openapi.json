@@ -3,8 +3,20 @@
   "info": {
     "title": "Tektolo Capabilities API",
     "summary": "Source-cited capabilities for humans, developers and agents: the same findings under the same ruleset always give the same answer.",
+    "description": "Rules-based tools for the US rental move-out. Property turnover prices the make-ready work from inspection findings, scaled to the ZIP code's labor market. Deposit settlement applies each state's security deposit statute (and covered cities' ordinances): the return deadline, each deduction assessed, interest, the refund and a draft itemized statement. Every result carries its citations, assumptions and the ruleset version that produced it. No account is needed. The same operations are MCP tools at /mcp/rental-property, and /catalog.json lists each one with its schemas and examples.",
+    "termsOfService": "https://tektolo.com/terms",
+    "contact": {
+      "name": "Tektolo",
+      "url": "https://tektolo.com/contact",
+      "email": "hello@tektolo.com"
+    },
     "version": "0.1.0"
   },
+  "servers": [
+    {
+      "url": "https://tektolo.com"
+    }
+  ],
   "paths": {
     "/v1/keys": {
       "post": {
@@ -12,7 +24,7 @@
           "keys"
         ],
         "summary": "Get a connector key",
-        "description": "A personal free-tier allowance for clients behind a shared IP (hosted assistants).\nUse the returned ``mcp_url`` as the MCP server URL, or send the key as\n``Authorization: Bearer <key>`` on REST. No account; nothing about you is stored.",
+        "description": "A connector key: its own daily allowance of free calls, for clients behind a shared\nIP (hosted assistants). Use the returned ``mcp_url`` as the MCP server URL, or send the\nkey as ``Authorization: Bearer <key>`` on REST. No account, and the key says nothing\nabout who holds it; nothing about the caller is stored. When the site's challenge is\non, this route mints fewer keys per connection than the form on Connect your AI.",
         "operationId": "create_key_v1_keys_post",
         "responses": {
           "200": {
