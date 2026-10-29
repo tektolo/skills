@@ -2,7 +2,7 @@
   "mcpServers": {
     "tektolo": {
       "type": "http",
-      "url": "https://tektolo.com/mcp"
+      "url": "https://tektolo.com/mcp/rental-property"
     }
   }
 }
