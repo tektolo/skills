@@ -14,7 +14,7 @@ This repository holds only instructions and public metadata. The engines and rul
 | **Property turnover estimate** | Turn move-out inspection findings into a priced, vendor-ready make-ready scope. | `property_turnover_quick_estimate`, `property_turnover_scope`, `property_turnover_issue_codes` | [web tool](https://tektolo.com/tools/rental-property/property-turnover) · [reference](https://tektolo.com/capabilities/property-turnover) · [skill](skills/property-turnover/SKILL.md) |
 | **Deposit settlement** | Settle a US rental security deposit under the state's rule (and a covered city's): the return deadline, each deduction assessed (allowed category, depreciation, documentation), interest owed, the refund, penalty exposure and a draft itemized statement, every number cited. | `deposit_settlement_settle`, `deposit_settlement_rules` | [web tool](https://tektolo.com/tools/rental-property/deposit-settlement) · [reference](https://tektolo.com/capabilities/deposit-settlement) · [skill](skills/deposit-settlement/SKILL.md) |
 
-Pricing: Try every tool free. Agents and software get a free tier of 20 calls a day, then $0.02 a call. Some tools will add paid features. Details: https://tektolo.com/pricing
+Pricing: Try every tool free. Agents and software get a free tier of 20 calls a day. Some tools will add paid features. Details: https://tektolo.com/pricing
 <!-- tools:end -->
 
 ## Use it from your AI assistant

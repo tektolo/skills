@@ -51,8 +51,8 @@ Datasets under CC BY 4.0 (credit Tektolo, tektolo.com, with the version), built 
 
 ## Pricing
 
-Try every tool free. Agents and software get a free tier of 20 calls a day, then $0.02 a call. Some tools will add paid features. The paid lane is in testing today; until it opens, the free tier applies.
-Counted: deposit_settlement_settle (and its downloads), property_turnover_quick_estimate, property_turnover_scope (and its downloads). REST and MCP calls share one count per client per UTC day and the same price per call; the paid lane is REST only. Over the limit the REST route answers HTTP 429 (error free_tier_exhausted) with the reset time and the paid route, and an MCP tool returns the same message as a tool error. Responses under the limit carry X-TK-Free-Remaining. The web tools have their own allowance (50 estimates a day), separate from this tier. Volume or an integration: https://tektolo.com/contact
+Try every tool free. Agents and software get a free tier of 20 calls a day. Some tools will add paid features. We'll set paid pricing with our pilot agencies. The paid lane is in testing today; until it opens, the free tier applies.
+Counted: deposit_settlement_settle (and its downloads), property_turnover_quick_estimate, property_turnover_scope (and its downloads). REST and MCP calls share one count per client per UTC day; the paid lane is REST only. Over the limit the REST route answers HTTP 429 (error free_tier_exhausted) with the reset time and the paid route, and an MCP tool returns the same message as a tool error. Responses under the limit carry X-TK-Free-Remaining. The web tools have their own allowance (50 estimates a day), separate from this tier. Volume or an integration: https://tektolo.com/contact
 
 ## Machine-readable
 
@@ -67,19 +67,19 @@ Counted: deposit_settlement_settle (and its downloads), property_turnover_quick_
 
 Pay-per-call routes for agents that need more than the daily free tier (20 calls a day per client). Same request and result as the free route. x402 v2, exact scheme, USDC on Base Sepolia testnet (test money only, no real charges). Unpaid calls get HTTP 402 with a PAYMENT-REQUIRED header; retry with PAYMENT-SIGNATURE. Only successful results are charged. Not available over MCP.
 
-- POST https://tektolo.com/v1/x402/deposit-settlement/settle: $0.02 per call
-- POST https://tektolo.com/v1/x402/deposit-settlement/settle/render/html: $0.05 per call
-- POST https://tektolo.com/v1/x402/deposit-settlement/settle/render/pdf: $0.05 per call
-- POST https://tektolo.com/v1/x402/deposit-settlement/settle/render/csv: $0.05 per call
-- POST https://tektolo.com/v1/x402/deposit-settlement/settle/render/tenant_html: $0.05 per call
-- POST https://tektolo.com/v1/x402/deposit-settlement/settle/render/tenant_pdf: $0.05 per call
-- POST https://tektolo.com/v1/x402/property-turnover/quick_estimate: $0.02 per call
-- POST https://tektolo.com/v1/x402/property-turnover/scope: $0.02 per call
-- POST https://tektolo.com/v1/x402/property-turnover/scope/render/xlsx: $0.05 per call
-- POST https://tektolo.com/v1/x402/property-turnover/scope/render/html: $0.05 per call
-- POST https://tektolo.com/v1/x402/property-turnover/scope/render/csv: $0.05 per call
-- POST https://tektolo.com/v1/x402/property-turnover/scope/render/vendor_csv: $0.05 per call
-- POST https://tektolo.com/v1/x402/property-turnover/scope/render/bids_html: $0.05 per call
+- POST https://tektolo.com/v1/x402/deposit-settlement/settle: $0.02 in test USDC per call
+- POST https://tektolo.com/v1/x402/deposit-settlement/settle/render/html: $0.05 in test USDC per call
+- POST https://tektolo.com/v1/x402/deposit-settlement/settle/render/pdf: $0.05 in test USDC per call
+- POST https://tektolo.com/v1/x402/deposit-settlement/settle/render/csv: $0.05 in test USDC per call
+- POST https://tektolo.com/v1/x402/deposit-settlement/settle/render/tenant_html: $0.05 in test USDC per call
+- POST https://tektolo.com/v1/x402/deposit-settlement/settle/render/tenant_pdf: $0.05 in test USDC per call
+- POST https://tektolo.com/v1/x402/property-turnover/quick_estimate: $0.02 in test USDC per call
+- POST https://tektolo.com/v1/x402/property-turnover/scope: $0.02 in test USDC per call
+- POST https://tektolo.com/v1/x402/property-turnover/scope/render/xlsx: $0.05 in test USDC per call
+- POST https://tektolo.com/v1/x402/property-turnover/scope/render/html: $0.05 in test USDC per call
+- POST https://tektolo.com/v1/x402/property-turnover/scope/render/csv: $0.05 in test USDC per call
+- POST https://tektolo.com/v1/x402/property-turnover/scope/render/vendor_csv: $0.05 in test USDC per call
+- POST https://tektolo.com/v1/x402/property-turnover/scope/render/bids_html: $0.05 in test USDC per call
 - [Pay per call guide](https://tektolo.com/connect-your-ai#x402); prices and endpoints are also in [catalog.json](https://tektolo.com/catalog.json) under each operation's `x402`
 
 ## Feedback

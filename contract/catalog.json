@@ -27,12 +27,12 @@
   },
   "pricing": {
     "page": "https://tektolo.com/pricing",
-    "model": "Try every tool free. Agents and software get a free tier of 20 calls a day, then $0.02 a call. Some tools will add paid features.",
+    "model": "Try every tool free. Agents and software get a free tier of 20 calls a day. Some tools will add paid features.",
     "free_calls_per_day": 20,
     "free_tier": "Per client, per UTC day, REST and MCP calls together. The client is a connector key when the call carries one; else, on MCP, the user id the assistant sends (ChatGPT's _meta openai/subject, stored only as a salted hash); else, for an assistant that sends no user id (Claude), one shared daily pool of 200 calls, matched by its published egress addresses; else the IP address. One IP address gets at most 1000 calls a day across its users (connector keys excepted). Counts operations whose pricing model is free_tier; free lookups are not counted.",
     "host_pool_calls_per_day": 200,
     "ip_ceiling_per_day": 1000,
-    "then_usd_per_call": "0.02",
+    "then_usd_per_call": null,
     "paid_lane": {
       "protocol": "x402",
       "status": "testing",
@@ -229,7 +229,6 @@
             "model": "free_tier",
             "free_calls_per_day": 20,
             "free_tier_scope": "per client, UTC day, REST and MCP together",
-            "then_usd_per_call": "0.02",
             "paid_lane": "x402",
             "paid_lane_status": "testing"
           },
@@ -340,7 +339,6 @@
             "model": "free_tier",
             "free_calls_per_day": 20,
             "free_tier_scope": "per client, UTC day, REST and MCP together",
-            "then_usd_per_call": "0.02",
             "paid_lane": "x402",
             "paid_lane_status": "testing"
           },
@@ -2313,7 +2311,6 @@
             "model": "free_tier",
             "free_calls_per_day": 20,
             "free_tier_scope": "per client, UTC day, REST and MCP together",
-            "then_usd_per_call": "0.02",
             "paid_lane": "x402",
             "paid_lane_status": "testing"
           },
